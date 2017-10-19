@@ -9,11 +9,11 @@ test : $(objects)
 	cp ../data/threesData.bin ../build
 	cp test ../build
 
-readInt32BitLE.o : readInt32BitLE.c readInt32BitLE.h
-	cc -c readInt32BitLE.c
+readInt32BitLE.o : readInt32BitLE.c 
+	cc -c readInt32BitLE.c -o readInt32BitLE.o
 
 ServerCountThrees.o : ServerCountThrees.c
-	cc -o -c ServerCountThrees.c
+	cc -c ServerCountThrees.c -o ServerCountThrees.o
 
 ServerCountThrees : $(objects)
 	cc -o ServerCountThrees $(objects)
