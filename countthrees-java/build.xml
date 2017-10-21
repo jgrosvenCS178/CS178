@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+    <project name="Count3s" basedir="." default="main">
+
+    <property name="src.dir"     value="src"/>
+
+        <property name="build.dir"   value="build"/>
+        <property name="classes.dir" value="${build.dir}/classes"/>
+        <property name="jar.dir"     value="${build.dir}/jar"/>
+        
+        <property name="main-class"  value="CountThrees"/>
+    
+        <target name="clean">
+            <delete dir="${build.dir}"/>
+        </target>
+
+        <target name="compile">
+            <mkdir dir="${build.dir}"/>
+            <mkdir dir="${classes.dir}"/>
+            <javac srcdir="${src.dir}" destdir="${classes.dir}"/>
+            <copy todir="${classes.dir}">
+                <fileset dir="${src.dir}" excludes="**/*.java"/>
+            </copy>
+        </target>
+
+        <target name="jar">
+            <mkdir dir="${jar.dir}"/>
+            <jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${classes.dir}">
+                <manifest>
+                    <attribute name="Main-Class" value="${main-class}"/>
+                </manifest>
+            </jar>
+        </target>
+
+        <target name="run">
+            <java jar="${jar.dir}/${ant.project.name}.jar" fork="true"/>
+        </target>
+</project>
