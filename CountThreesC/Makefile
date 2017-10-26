@@ -19,7 +19,8 @@ countThrees.o : countThrees.c
 	cc -c countThrees.c -o countThrees.o
 
 runCountThrees : $(objects)
-	cc $(objects) -o RunCountThrees
+	cc $(objects) -o runCountThrees
+	./runCountThrees
 
 .PHONY : clean
 clean :
